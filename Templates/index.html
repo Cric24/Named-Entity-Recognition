@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/index.css">
+    <title>Named Entity Recognition</title>
+</head>
+<body>
+    <h1><center>Named Entity Recognition</center></h1>
+    <form action="/analyze" method="post">
+        <textarea name="text" rows="4" cols="50" placeholder="Enter text..."></textarea><br>
+        <input type="submit" value="Analyze">
+    </form>
+    {% if entities %}
+    <h2><center>Analysis Result</center></h2>
+  
+    <table border="1" align="center">
+        <tr>
+            <th>Entity</th>
+            <th>Label</th>
+        </tr>
+        {% for entity, label in entities %}
+        <tr>
+            <td>{{ entity }}</td>
+            <td>{{ label }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>
